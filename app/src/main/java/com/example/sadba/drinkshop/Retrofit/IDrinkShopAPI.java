@@ -1,6 +1,7 @@
 package com.example.sadba.drinkshop.Retrofit;
 
 import com.example.sadba.drinkshop.Model.Banner;
+import com.example.sadba.drinkshop.Model.Category;
 import com.example.sadba.drinkshop.Model.CheckUserResponse;
 import com.example.sadba.drinkshop.Model.User;
 
@@ -32,4 +33,7 @@ public interface IDrinkShopAPI {
 
     @GET("getBanner.php")
     Observable<List<Banner>> getBanners();
+
+    @GET("getMenu.php")
+    Observable<List<Category>> getMenu();
 }
