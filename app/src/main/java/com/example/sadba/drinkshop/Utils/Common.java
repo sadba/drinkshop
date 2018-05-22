@@ -6,7 +6,7 @@ import com.example.sadba.drinkshop.Retrofit.RetrofitCLient;
 
 public class Common {
 
-    private static final String BASE_URL = "http://192.168.1.20/drinkshop/";
+    private static final String BASE_URL = "http://192.168.3.190/drinkshop/";
 
     public static  User currentUser = null;
 
