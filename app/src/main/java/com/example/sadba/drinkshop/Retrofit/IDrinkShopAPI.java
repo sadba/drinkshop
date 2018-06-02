@@ -3,6 +3,7 @@ package com.example.sadba.drinkshop.Retrofit;
 import com.example.sadba.drinkshop.Model.Banner;
 import com.example.sadba.drinkshop.Model.Category;
 import com.example.sadba.drinkshop.Model.CheckUserResponse;
+import com.example.sadba.drinkshop.Model.Drink;
 import com.example.sadba.drinkshop.Model.User;
 
 import java.util.List;
@@ -30,6 +31,10 @@ public interface IDrinkShopAPI {
     @FormUrlEncoded
     @POST("getUser.php")
     Call<User> getUserInformation(@Field("phone") String phone);
+
+    @FormUrlEncoded
+    @POST("getDrink.php")
+    Observable<List<Drink>> getDrink(@Field("menuid") String menuId);
 
     @GET("getBanner.php")
     Observable<List<Banner>> getBanners();

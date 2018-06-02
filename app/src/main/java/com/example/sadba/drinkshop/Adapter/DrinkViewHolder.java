@@ -8,10 +8,12 @@ import android.widget.TextView;
 import com.example.sadba.drinkshop.Interface.IItemClickListener;
 import com.example.sadba.drinkshop.R;
 
-public class CategoryViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+import org.w3c.dom.Text;
+
+public class DrinkViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
     ImageView img_product;
-    TextView txt_menu_name;
+    TextView txt_drink_name, txt_price;
 
     IItemClickListener iItemClickListener;
 
@@ -19,11 +21,12 @@ public class CategoryViewHolder extends RecyclerView.ViewHolder implements View.
         this.iItemClickListener = iItemClickListener;
     }
 
-    public CategoryViewHolder(View itemView){
+    public DrinkViewHolder(View itemView) {
         super(itemView);
 
         img_product = itemView.findViewById(R.id.image_product);
-        txt_menu_name = itemView.findViewById(R.id.txt_menu_name);
+        txt_drink_name = itemView.findViewById(R.id.txt_drink_name);
+        txt_price = itemView.findViewById(R.id.txt_price);
 
         itemView.setOnClickListener(this);
     }
