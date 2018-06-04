@@ -6,6 +6,7 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.sadba.drinkshop.Adapter.DrinkAdapter;
 import com.example.sadba.drinkshop.Model.Drink;
@@ -44,7 +45,7 @@ public class DrinkActivity extends AppCompatActivity {
 
         txt_banner_name = findViewById(R.id.txt_menu_name);
         txt_banner_name.setText(Common.currentCategory.getName());
-
+        Toast.makeText(this, Common.currentCategory.getID(), Toast.LENGTH_SHORT).show();
         loadListDrink(Common.currentCategory.getID());
     }
 

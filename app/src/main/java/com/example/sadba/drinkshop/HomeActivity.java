@@ -20,8 +20,12 @@ import com.daimajia.slider.library.SliderLayout;
 import com.daimajia.slider.library.SliderTypes.BaseSliderView;
 import com.daimajia.slider.library.SliderTypes.TextSliderView;
 import com.example.sadba.drinkshop.Adapter.CategoryAdapter;
+import com.example.sadba.drinkshop.Database.DataSource.CartRepository;
+import com.example.sadba.drinkshop.Database.Local.CartDataSource;
+import com.example.sadba.drinkshop.Database.Local.CartDatabase;
 import com.example.sadba.drinkshop.Model.Banner;
 import com.example.sadba.drinkshop.Model.Category;
+import com.example.sadba.drinkshop.Model.Drink;
 import com.example.sadba.drinkshop.Retrofit.IDrinkShopAPI;
 import com.example.sadba.drinkshop.Utils.Common;
 
@@ -96,6 +100,29 @@ public class HomeActivity extends AppCompatActivity
         
         //Get Menu
         getMenu();
+
+        //Save Newest Topping List
+        getToppingList();
+
+        //Init Database
+        initDB();
+    }
+
+    private void initDB() {
+        Common.cartDatabase = CartDatabase.getInstance(this);
+        Common.cartRepository = CartRepository.getInstance(CartDataSource.getInstance(Common.cartDatabase.cartDAO()));
+    }
+
+    private void getToppingList() {
+        compositeDisposable.add(mService.getDrink(Common.TOPPING_MENU_ID)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Consumer<List<Drink>>() {
+                    @Override
+                    public void accept(List<Drink> drinks) throws Exception {
+                        Common.toppingList = drinks;
+                    }
+                }));
     }
 
     private void getMenu() {
